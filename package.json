@@ -4,9 +4,6 @@
   "description": "A UI Component Library with Vue.js",
   "homepage": "https://at.aotu.io",
   "main": "dist/at.js",
-  "engines": {
-    "node": ">=6"
-  },
   "scripts": {
     "dev": "nodemon build/dev-server",
     "lint": "eslint --ext .js,.vue src docs build --ignore-pattern src/stylesheet test/unit/specs test/e2e/specs",
@@ -75,7 +72,7 @@
     "json-loader": "^0.5.7",
     "markdown-it": "^8.4.0",
     "markdown-it-container": "^2.0.0",
-    "node-sass": "latest",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.14.11",
     "ora": "^1.3.0",
     "postcss-loader": "^2.0.10",
