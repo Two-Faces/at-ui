@@ -40,8 +40,7 @@ export default {
     percent: {
       type: Number,
       default: 0,
-      required: true,
-      validator: val => val >= 0 && val <= 100
+      required: true
     },
     strokeWidth: {
       type: Number,

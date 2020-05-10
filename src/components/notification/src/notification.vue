@@ -9,7 +9,7 @@
       }"
       :style="{ top: top ? top + 'px' : 'auto' }"
       v-show="isShow"
-      @click="!showClose && handleClose()"
+      @click="!showClose && handleClose('click')"
       @mouseleave="startTimer"
       @mouseenter="clearTimer">
       <i class="icon at-notification__icon" :class="iconClass" v-if="showIcon"></i>
@@ -17,7 +17,7 @@
         <p class="at-notification__title" v-if="title" v-text="title"></p>
         <p class="at-notification__message" v-if="message" v-text="message"></p>
       </div>
-      <i class="icon icon-x at-notification__close" v-show="showClose" @click="handleClose"></i>
+      <i class="icon icon-x at-notification__close" v-show="showClose" @click="handleClose('times')"></i>
     </div>
   </transition>
 </template>
@@ -65,17 +65,17 @@ export default {
       this.$destroy(true)
       this.$el.parentNode.removeChild(this.$el)
     },
-    handleClose () {
+    handleClose (event) {
       this.closed = true
       if (typeof this.onClose === 'function') {
-        this.onClose()
+        this.onClose(event)
       }
     },
     startTimer () {
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           if (!this.closed) {
-            this.handleClose()
+            this.handleClose('timer')
           }
         }, this.duration)
       }
