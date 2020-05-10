@@ -16,8 +16,8 @@ const Notification = options => {
   const onClose = options.onClose
   const id = `notification_${seed++}`
 
-  options.onClose = function () {
-    Notification.close(id, onClose)
+  options.onClose = function (event) {
+    Notification.close(id, onClose, event)
   }
 
   instance = new NotificationConstructor({
@@ -45,7 +45,7 @@ const Notification = options => {
   return instance.vm
 }
 
-Notification.close = function (id, onClose) {
+Notification.close = function (id, onClose, event) {
   const len = instances.length
   let index
   let removedHeight
@@ -54,7 +54,7 @@ Notification.close = function (id, onClose) {
   for (i = 0; i < len; i++) {
     if (id === instances[i].id) {
       if (typeof onClose === 'function') {
-        onClose(instances[i])
+        onClose(event)
       }
       index = i
       removedHeight = instances[i].dom.offsetHeight
