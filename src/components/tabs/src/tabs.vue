@@ -6,9 +6,6 @@
       'at-tabs--scroll': scrollable
     }">
     <div class="at-tabs__header">
-      <div class="at-tabs__extra" v-if="$slots.extra">
-        <slot name="extra"></slot>
-      </div>
       <div class="at-tabs__nav">
         <!-- S prev btn -->
         <span class="at-tabs__prev"
@@ -62,6 +59,9 @@
           </div>
         </div>
         <!-- E Tab nav -->
+      </div>
+      <div class="at-tabs__extra" v-if="$slots.extra">
+        <slot name="extra"></slot>
       </div>
     </div>
     <div class="at-tabs__body" :style="tabsBodyTranslateStyle">
