@@ -64,7 +64,7 @@
         <slot name="extra"></slot>
       </div>
     </div>
-    <div class="at-tabs__body" :style="tabsBodyTranslateStyle">
+    <div class="at-tabs__body">
       <slot></slot>
     </div>
   </div>
@@ -132,14 +132,6 @@ export default {
         }
       }
       return 0
-    },
-    tabsBodyTranslateStyle () {
-      const activeIndex = this.activeIndex
-      const translateValue = this.animated ? `${-activeIndex * 100}%` : 0
-
-      return {
-        transform: `translate3d(${translateValue}, 0, 0)`
-      }
     }
   },
   methods: {
@@ -302,12 +294,12 @@ export default {
 		} else {
 			this.nextable = false
 			this.prevable = false
-			
+
 				if (currentOffset > 0) {
 		  			this.setOffset(0)
 				}
 			}
-		} 
+		}
      }
   },
   mounted () {
