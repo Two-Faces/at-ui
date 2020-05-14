@@ -382,21 +382,23 @@ export default {
       this.$emit('on-selection-change', selection)
     },
     handleSort (index, type) {
-      const key = this.columnsData[index].key
-      const sortType = this.columnsData[index]._sortType
+      const data = this.columnsData[index];
+      const key = data.key
+      const sortType = data.sortType
       const sortNameArr = ['normal', 'desc', 'asc']
 
-      if (this.columnsData[index].sortType) {
+      if (sortType) {
         if (!type) {
-          const tmpIdx = sortNameArr.indexOf(sortType)
+          const tmpIdx = sortNameArr.indexOf(data._sortType)
           if (tmpIdx >= 0) {
             type = sortNameArr[(tmpIdx + 1) > 2 ? 0 : tmpIdx + 1]
           }
         }
-        if (type === 'normal') {
-          this.sortData = this.makeDataWithSortAndPage(this.currentPage)
-        } else {
-          this.sortData = this.sort(this.sortData, type, index)
+
+        if (!data.sortAjax) {
+          this.sortData = type === 'normal' ?
+                  this.makeDataWithSortAndPage(this.currentPage) :
+                  this.sort(this.sortData, type, index);
         }
       }
       this.columnsData[index]._sortType = type
