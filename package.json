@@ -1,6 +1,6 @@
 {
   "name": "@two-faces/at-ui",
-  "version": "1.4.3",
+  "version": "1.4.5",
   "description": "A UI Component Library with Vue.js",
   "homepage": "https://at.aotu.io",
   "main": "dist/at.js",

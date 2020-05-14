@@ -401,7 +401,7 @@ export default {
                   this.sort(this.sortData, type, index);
         }
       }
-      this.columnsData[index]._sortType = type
+      this.columnsData.map((item, key) => item._sortType = key === index ? type : item.sortType)
 
       this.$emit('on-sort-change', {
         column: JSON.parse(JSON.stringify(this.columns[this.columnsData[index]._index])),
