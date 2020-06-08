@@ -12,7 +12,7 @@
       @click="!showClose && handleClose('click')"
       @mouseleave="startTimer"
       @mouseenter="clearTimer">
-      <i class="icon at-notification__icon" :class="iconClass" v-if="showIcon"></i>
+      <i class="at-notification__icon" :class="iconClass" v-if="showIcon"></i>
       <div class="at-notification__content">
         <p class="at-notification__title" v-if="title" v-text="title"></p>
         <p class="at-notification__message" v-if="message" v-text="message"></p>
@@ -49,12 +49,12 @@ export default {
   computed: {
     iconClass () {
       const classArr = {
-        'success': 'icon-check-circle',
-        'error': 'icon-x-circle',
-        'warning': 'icon-alert-circle',
-        'info': 'icon-info'
+        'success': 'icon icon-check-circle',
+        'error': 'icon icon-x-circle',
+        'warning': 'icon icon-alert-circle',
+        'info': 'icon icon-info'
       }
-      return classArr[this.type] || this.icon
+      return this.icon || classArr[this.type]
     },
     showIcon () {
       return this.type
